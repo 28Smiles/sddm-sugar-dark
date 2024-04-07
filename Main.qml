@@ -37,7 +37,7 @@ Pane {
     palette.highlight: config.AccentColor
     palette.text: config.MainColor
     palette.buttonText: config.MainColor
-    palette.window: "#444"
+    palette.window: config.BackgroundColor
 
     font.family: config.Font
     font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80)
@@ -74,8 +74,8 @@ Pane {
             id: formBackground
             anchors.fill: form
             anchors.centerIn: form
-            color: "#444"
-            opacity: config.PartialBlur == "true" ? 0.3 : 1
+            color: config.BackgroundColor
+            opacity: config.PartialBlur == "true" ? config.PartialBlurOpacity : 1
             z: 1
         }
 
@@ -200,7 +200,7 @@ Pane {
 
             height: parent.height
             width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
-            anchors.left: leftleft || 
+            anchors.left: leftleft ||
                           leftcenter ?
                                 formBackground.right : undefined
 
